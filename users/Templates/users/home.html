@@ -1,0 +1,40 @@
+{% block content %}
+    <head>
+        <meta charset="utf-8">
+        <!-- import jquery bootstrap-->
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+        <script>
+            //modifying the show entry select picker
+            $(document).ready(function(){
+                $('#user_table_list').DataTable();
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container" style="margin-top: 2%">
+            <table id="user_table_list" class="table table-bordered table-responsive" width="100%" >
+                <thead>
+                    <tr>
+                        <th style="width:20%">ID</th>
+                        <th style="width:45%">Username</th>
+                        <th style="width:35%">Avatar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user_data in list_of_users %}<!--for each loop fetch dynamic data -->
+                        <tr>
+                            <td>{{ user_data.id }}</td>
+                            <td><a href="#" style="color:#87CBEB;text-decoration:none">{{ user_data.login }}</a></td> <!--making name as a hyperlink -->
+                            <td><img src="{{ user_data.avatar_url }}" width="10%"/></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+{% endblock %}
+
